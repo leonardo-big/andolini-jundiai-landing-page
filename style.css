@@ -1,0 +1,236 @@
+:root {
+    --paper-color: #fdfaf0;
+    --text-color: #1a1a1a;
+    --highlight-red: #d41b1b;
+    --btn-green: #71894a;
+    --btn-green-hover: #5d6e3c;
+    --font-heading: "TAN HARMONI", "TAN Harmoni", "TAN-Harmoni", serif;
+    --font-masthead: "TAN HARMONI", "TAN Harmoni", "TAN-Harmoni", cursive;
+    --font-body: "MADE Evolve Sans", "Montserrat", "Inter", sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1a1a1a;
+    color: var(--text-color);
+    font-family: var(--font-body);
+    line-height: 1.5;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+.background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E"),
+        url('assets/pizzeria.png');
+    background-size: auto, cover;
+    background-position: center, center;
+    filter: grayscale(100%) contrast(1.1) brightness(0.35);
+    z-index: -1;
+}
+
+.page-container {
+    padding: 0;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+/* Container wrappers */
+.newspaper-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 500px;
+    width: 100%;
+}
+
+.newspaper-paper {
+    background-color: var(--paper-color);
+    width: 100%;
+    padding: 25px 25px 40px 25px; /* Extra bottom padding for overlap */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    position: relative;
+    overflow: hidden;
+    z-index: 10;
+}
+
+/* Paper Grain Texture */
+.newspaper-paper::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-image: 
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E"),
+        radial-gradient(circle at 50% 50%, transparent 40%, rgba(0,0,0,0.02) 100%),
+        linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%, rgba(0,0,0,0.01) 100%);
+    background-blend-mode: multiply;
+    z-index: 10;
+}
+
+
+/* Header Styles */
+.news-header {
+    text-align: center;
+    width: 100%;
+    padding: 5px 0;
+}
+
+.masthead {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.masthead-title {
+    font-family: var(--font-masthead);
+    font-size: 2.2rem;
+    font-weight: normal;
+    margin: 0;
+}
+
+.issue-number, .year {
+    font-size: 0.8rem;
+    font-weight: normal;
+    color: #444;
+}
+
+.divider-thin {
+    border-top: 1px solid var(--text-color);
+    width: 100%;
+}
+
+.divider-thick {
+    border-top: 3px solid var(--text-color);
+    width: 100%;
+}
+
+.main-headline {
+    font-family: var(--font-heading);
+    font-size: 2.8rem;
+    font-weight: normal;
+    text-align: center;
+    line-height: 1;
+    margin: 15px 0;
+    text-transform: uppercase;
+}
+
+/* Image Styles */
+.main-image {
+    width: 100%;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.main-image img {
+    width: 100%;
+    display: block;
+    filter: contrast(1.1) grayscale(1);
+    border: 1px solid #ddd;
+}
+
+/* Article Content */
+.content {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 25px;
+}
+
+.content p {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.35;
+    text-align: left;
+}
+
+.cta-text {
+    font-family: var(--font-heading);
+    font-size: 1.6rem !important; /* Emulate the large condensed text of Birch Std */
+    line-height: 1 !important;
+    text-transform: uppercase;
+    text-align: justify !important;
+    margin: 10px 0 15px 0 !important;
+}
+
+.cta-text .highlight {
+    font-family: var(--font-heading);
+    color: var(--highlight-red);
+}
+
+/* Call to Action Outisde */
+.cta-container-outside {
+    position: relative;
+    z-index: 20;
+    margin-top: -30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.whatsapp-btn {
+    background: linear-gradient(to bottom, #8a9f60, #4f632d);
+    color: white;
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    padding: 15px 30px;
+    border-radius: 40px;
+    width: 90%;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.6), inset 0 3px 5px rgba(255,255,255,0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 2px solid #576b32;
+    line-height: 0.9;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.whatsapp-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.7), inset 0 3px 5px rgba(255,255,255,0.5);
+    background: linear-gradient(to bottom, #9ab566, #5d7435);
+}
+
+.disclaimer {
+    font-size: 0.8rem;
+    color: #e0e0e0;
+    margin-top: 15px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+    font-style: auto;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 400px) {
+    .main-title {
+        font-size: 1.5rem;
+    }
+    .headline {
+        font-size: 1.4rem;
+    }
+    .newspaper {
+        padding: 20px;
+    }
+}
